@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormComponent } from './form/form.component';
 import { BoardComponent } from './board/board.component';
-import { MatStepperModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatChipsModule, MatIconModule, MatCardMdImage, MatCardModule, MatOptionModule, MatSelectModule, MatSnackBarModule, MatSpinner, MatProgressSpinnerModule, MatRippleModule, MatDialogModule } from '@angular/material';
+import { MatStepperModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatChipsModule, MatIconModule, MatCardMdImage, MatCardModule, MatOptionModule, MatSelectModule, MatSnackBarModule, MatSpinner, MatProgressSpinnerModule, MatRippleModule, MatDialogModule, MatBadgeModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FeaturesComponent } from './features/features.component';
 import { Feature } from './feature.motel';
@@ -39,6 +39,7 @@ import { DialogOverviewExampleDialog } from './features/features.component';
     MatOptionModule,
     MatProgressSpinnerModule,
     MatSelectModule,
+    MatBadgeModule,
     MatDialogModule,
     MatIconModule,
     MatStepperModule,

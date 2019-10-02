@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Feature } from './../feature.motel';
 import { Router } from '@angular/router';
-import { Observable} from 'rxjs'
+import { Observable, merge} from 'rxjs'
 import { AngularFirestore, AngularFirestoreCollection }  from '@angular/fire/firestore';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
@@ -15,6 +15,7 @@ export class FeaturesComponent implements OnInit {
    features: [Feature];
    feature: Feature;
    id: String;
+   votes: number;
   constructor(
      private afs: AngularFirestore,
      private router: Router,
@@ -24,6 +25,15 @@ export class FeaturesComponent implements OnInit {
 
 addFeature() {
    this.router.navigateByUrl('/form');
+}
+
+addVote(id) {
+   this.afs.collection("Features").doc<Feature>(`${id}`).valueChanges().subscribe(f => {
+      this.feature = JSON.parse(JSON.stringify(f));
+   })
+   this.afs.collection("Features").doc<Feature>(`${id}`).set({
+      votes: this.feature.votes + 1
+   }, {merge: true});
 }
 
 viewButton(id) {
@@ -36,7 +46,7 @@ viewButton(id) {
 
   ngOnInit() {
    setTimeout(() => {
-
+ 
       this.afs.collection("Features").valueChanges().subscribe(features => {
          this.features = JSON.parse(JSON.stringify(features));
          this.loading = false;
@@ -64,6 +74,15 @@ viewButton(id) {
          console.log(this.feature);
       });
      }
+
+   addVote(id) {
+      this.afs.collection("Features").doc<Feature>(`${id}`).valueChanges().subscribe(f => {
+         this.feature = JSON.parse(JSON.stringify(f));
+      })
+      this.afs.collection("Features").doc<Feature>(`${id}`).set({
+         votes: this.feature.votes + 1
+      }, {merge: true});
+   }
 
    onNoClick(): void {
      this.dialogRef.close();

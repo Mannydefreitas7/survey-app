@@ -1,10 +1,15 @@
 export class Feature {
-   id: String;
+   id?: String;
    image?: string;
    gif?: string
-	title: string;
+	title?: string;
 	category?: string;
 	description?: string;
    votes?: number;
-   isCustom: Boolean;
+   isCustom?: Boolean;
+}
+
+export class Category {
+   id?: string;
+   name?: string;
 }

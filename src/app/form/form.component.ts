@@ -5,7 +5,7 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Feature } from '../feature.motel';
+import { Feature, Category } from '../feature.motel';
 import { MatSnackBar } from '@angular/material';
 
 @Component({
@@ -20,6 +20,7 @@ export class FormComponent implements OnInit {
    selectable = true;
    removable = true;
    addOnBlur = true;
+   categories: [Category];
    
    readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
@@ -34,23 +35,38 @@ export class FormComponent implements OnInit {
    this.surveyGroup = this._formBuilder.group({
       title: ['', [Validators.required, Validators.minLength(4)]],
       category: [''],
+      customCategory: ['', Validators.minLength(3)],
       description: ['']
+   });
+
+   this.afs.collection("category").valueChanges().subscribe(category => {
+      this.categories = JSON.parse(JSON.stringify(category));
    });
   }
 
+  goBack() {
+     this.router.navigateByUrl('');
+  }
 
 createFeature() {
    const title = this.surveyGroup.get("title");
    const category = this.surveyGroup.get("category");
+   const customCategory = this.surveyGroup.get("customCategory");
    const description = this.surveyGroup.get("description");
    const id = this.afs.createId()
    return this.afs.collection("Features").doc<Feature>(id).set({
       id: id,
       title: title.value,
-      category: category.value,
+      category: category.value || customCategory.value,
       description: description.value,
       votes: 0,
       isCustom: true
+   })
+   .then(() => {
+       this.afs.collection("category").doc<Category>(`${id}`).set({
+         id: id,
+         name: customCategory.value
+      })
    })
    .then(() => {
       this.router.navigateByUrl('/')

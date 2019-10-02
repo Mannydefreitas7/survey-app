@@ -1,6 +1,5 @@
 <section class="survey-welcome survey-section">
-
-   
+   <button mat-button  color="primary" (click)="goBack()">Go Back</button>
       <form [formGroup]="surveyGroup">
    
          <mat-horizontal-stepper [linear]="isLinear" #stepper>
@@ -31,18 +30,15 @@
                      <div>  
                               <mat-form-field appearance="fill">
                                     <mat-label>Select category</mat-label>
-                                    <mat-select formControlName="category"  [(value)]="selected">
-                                       <mat-option value="Meetings">Meetings</mat-option>
-                                       <mat-option value="Preaching">Preaching</mat-option>
-                                       <mat-option value="Website">Website</mat-option>
-                                       <mat-option value="App">App</mat-option>
+                                    <mat-select formControlName="category" [(value)]="selected">
+                                       <mat-option  *ngFor="let cat of categories" [value]="cat.name"> {{ cat.name }}</mat-option>
                                     </mat-select>
                                  </mat-form-field>
                                     <h3>OR...</h3>
 
                                     <mat-form-field appearance="fill">
                                        <mat-label>Create your own</mat-label>
-                                       <input matInput placeholder="New category" formControlName="category">
+                                       <input matInput placeholder="New category" formControlName="customCategory">
                                     </mat-form-field>
                              
                         <div>
@@ -61,7 +57,7 @@
                     <ng-template matStepLabel>Feature Description</ng-template>
                     <mat-form-field appearance="fill">
                         <mat-label>Feature Description</mat-label>
-                      <textarea matInput rows="8" cols="100" placeholder="Tell us more about your wanted feature..." formControlName="description"></textarea>
+                      <textarea matInput rows="8" cols="100" placeholder="Tell us more about your most wanted feature..." formControlName="description"></textarea>
                     </mat-form-field>
                     <div>
                       <button mat-button matStepperPrevious>Back</button>
@@ -75,9 +71,14 @@
                      <div class="section--question">
                            <div>
                      <ng-template matStepLabel>Done</ng-template>
-                     You are now done.
+
+                     <div class="done">
+                        <img src="../../assets/img/done.svg" alt="">
+                        <h4> You are now done.</h4>
+                     </div>
+
+                    
                      <div>
-                       <button mat-button matStepperPrevious>Back</button>
                        <button mat-raised-button color="primary" (click)="createFeature()">SUBMIT</button>
                      </div>
                   </div>

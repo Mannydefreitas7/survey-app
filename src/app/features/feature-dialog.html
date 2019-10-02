@@ -1,8 +1,18 @@
-<div>
-<h1>{{ feature.title }}</h1>
-<h4>{{ feature.category }}</h4>
-<div>
- <p>{{ feature.description }}</p>
- <span>{{ feature.votes }}</span>
+
+<div class="feature-modal">
+    <img class="image" [src]="feature.isCustom ? '../../assets/img/feature-img.png' : feature.gif" alt="">
+    <span class="label">Title</span>
+    <h2>{{ feature.title }}</h2>
+    <mat-chip-list aria-label="Fish selection"><mat-chip color="primary" selected>{{ feature.category }}</mat-chip></mat-chip-list>
+    <br>
+    <div *ngIf="feature.isCustom" class="description">
+        <span class="label">Description</span>
+        <p>{{ feature.description }}</p> 
+    </div>
+    <mat-dialog-actions align="center">
+            <button matDialogClose mat-button color="warn">CLOSE</button>
+            <button mat-flat-button color="primary"[matBadge]="feature.votes" matBadgePosition="after" matBadgeColor="warn" (click)="addVote(feature.id)">VOTE</button>
+           
+    </mat-dialog-actions>
 </div>
-</div>
+
