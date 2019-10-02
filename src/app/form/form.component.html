@@ -1,0 +1,91 @@
+<section class="survey-welcome survey-section">
+
+   
+      <form [formGroup]="surveyGroup">
+   
+         <mat-horizontal-stepper [linear]="isLinear" #stepper>
+   
+            <mat-step [stepControl]="titleControl">
+            
+                <ng-template matStepLabel>Feature Title</ng-template>
+
+               <div class="section--question">
+                  <div>
+                     <mat-form-field appearance="fill">
+                           <mat-label>Feature Title</mat-label>
+                        <input matInput placeholder="More Highlight Colors" formControlName="title">
+                     </mat-form-field>
+                  <div>
+                     <button mat-flat-button color="primary" matStepperNext>Next</button>
+                  </div>
+               </div>
+            </div>
+
+               
+            </mat-step>
+   
+            <mat-step [stepControl]="categoryControl">
+
+                <ng-template matStepLabel>Feature category</ng-template>
+                <div class="section--question">
+                     <div>  
+                              <mat-form-field appearance="fill">
+                                    <mat-label>Select category</mat-label>
+                                    <mat-select formControlName="category"  [(value)]="selected">
+                                       <mat-option value="Meetings">Meetings</mat-option>
+                                       <mat-option value="Preaching">Preaching</mat-option>
+                                       <mat-option value="Website">Website</mat-option>
+                                       <mat-option value="App">App</mat-option>
+                                    </mat-select>
+                                 </mat-form-field>
+                                    <h3>OR...</h3>
+
+                                    <mat-form-field appearance="fill">
+                                       <mat-label>Create your own</mat-label>
+                                       <input matInput placeholder="New category" formControlName="category">
+                                    </mat-form-field>
+                             
+                        <div>
+                           <button mat-button matStepperPrevious>Back</button>
+                           <button mat-raised-button color="primary" matStepperNext>Next</button>
+                        </div>
+                     </div>
+                  </div>
+
+            </mat-step>
+   
+            <mat-step [stepControl]="descriptionControl">
+   
+                  <div class="section--question">
+                        <div>
+                    <ng-template matStepLabel>Feature Description</ng-template>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Feature Description</mat-label>
+                      <textarea matInput rows="8" cols="100" placeholder="Tell us more about your wanted feature..." formControlName="description"></textarea>
+                    </mat-form-field>
+                    <div>
+                      <button mat-button matStepperPrevious>Back</button>
+                      <button mat-raised-button color="primary" matStepperNext>Next</button>
+                     </div>
+                  </div>
+               </div>
+                </mat-step>
+
+                <mat-step>
+                     <div class="section--question">
+                           <div>
+                     <ng-template matStepLabel>Done</ng-template>
+                     You are now done.
+                     <div>
+                       <button mat-button matStepperPrevious>Back</button>
+                       <button mat-raised-button color="primary" (click)="createFeature()">SUBMIT</button>
+                     </div>
+                  </div>
+               </div>
+                   </mat-step>
+   
+          </mat-horizontal-stepper>
+   
+          </form>
+    </section>
+   

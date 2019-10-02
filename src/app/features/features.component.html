@@ -1,0 +1,55 @@
+<section>
+  <h1>WELCOME TO FEATURE SURVEY</h1>
+
+  <section fxFill fxLayoutAlign="space-between center">
+    <h4>JW.ORG and JW Library Features</h4>
+    <button mat-button color="primary" (click)="addFeature()">
+      <mat-icon color="primary">add_circle</mat-icon> ADD FEATURE
+    </button>
+  </section>
+  <section *ngIf="loading" class="spinner" fxLayout="col" fxLayoutAlign="center center" fxFill>
+      <mat-spinner strokeWidth="7" diameter="70"></mat-spinner>
+   </section>
+
+  <section fxFill fxLayoutAlign="start center" fxLayout="row wrap" fxLayoutGap="15px">
+   
+    <mat-card class="feature-card" *ngFor="let feature of features" fxFlex="300px">
+
+      <img mat-card-image [src]="feature.isCustom ? '../../assets/img/feature-img.png' : feature.image"
+        alt="Photo of a Shiba Inu">
+
+ <mat-card-title>{{ feature.title }}</mat-card-title>
+        <mat-card-subtitle>  
+           <mat-icon color="primary">folder</mat-icon>
+           <span>{{ feature.category }}</span>
+         </mat-card-subtitle>
+      <!-- <mat-card-content>
+        <p>{{ feature.description }}</p>
+      </mat-card-content> -->
+      <mat-card-actions align="right">
+         <button mat-button color="primary" (click)="viewButton(feature.id)">
+            <i class="material-icons">open_with</i>
+            <span>View</span>
+         </button>
+        <button mat-icon-button color="accent">
+            <i class="material-icons">favorite_border</i>
+            <span>{{ feature.votes }}</span>
+      </button>
+      </mat-card-actions>
+    </mat-card>
+
+       <mat-card  matRipple matRippleColor="accent" fxFlex="300px" class="card add-feature" *ngIf="!loading" (click)="addFeature()">
+            <a style="cursor: pointer;" >
+              <mat-card-content fxLayoutAlign="center center" fxLayout="column" fxFill="472px">
+
+                <mat-icon color="primary">
+                  add_circle
+                </mat-icon>
+                <h3>ADD FEATURE</h3>
+              </mat-card-content>
+            </a>
+          </mat-card>
+
+
+  </section>
+</section>

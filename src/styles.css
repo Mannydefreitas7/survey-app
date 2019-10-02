@@ -1,1 +1,63 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+html, body { height: 100%; }
+body { margin: 0;
+background: #fff; font-family: 'Raleway', sans-serif;
+}
+.mat-stepper-horizontal {
+   background-color: #fff;
+}
+.main {
+      padding: 20px;
+    height: calc(100% - 40px);
+    display: block;
+}
+h1 {
+   font-size: 2rem;
+   color: #000;
+   text-align: center;
+}
+.section--question {
+    display: flex;
+    height: 50vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.mat-form-field-wrapper {
+   width: 500px;
+}
+.mat-form-field-underline {
+   display: none;
+}
+.mat-form-field-flex {
+   border-radius: 10px !important;
+   padding: 1em 1em 0 1.5em !important;
+}
+button, a {
+  margin-right: 8px;
+}
+.spinner {
+   height: 400px !important;
+}
+.mat-card-subtitle {
+   display: flex !important;
+   align-items: center !important;
+}
+.mat-card-subtitle span {
+   margin-left: 5px;
+}
+.card {
+   height: 472px;
+   border-radius: 15px !important;
+   box-shadow: none !important;
+   border: none;
+   background: #33333322;
+}
+.feature-card.mat-card {
+   box-shadow: 10px 10px 20px #3332;
+   border-radius: 15px;
+}
