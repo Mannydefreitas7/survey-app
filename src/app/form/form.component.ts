@@ -63,10 +63,12 @@ createFeature() {
       isCustom: true
    })
    .then(() => {
-       this.afs.collection("category").doc<Category>(`${id}`).set({
-         id: id,
-         name: customCategory.value
-      })
+      if (customCategory.value !== "") {
+         this.afs.collection("category").doc<Category>(`${id}`).set({
+            id: id,
+            name: customCategory.value
+         })
+      }
    })
    .then(() => {
       this.router.navigateByUrl('/')

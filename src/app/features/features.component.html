@@ -1,8 +1,8 @@
 <section>
   <section fxFill fxLayoutAlign="space-between center">
-    <h3>ALL FEATURES</h3>
-    <button class="top-button" mat-button color="primary" (click)="addFeature()">
-      <mat-icon color="primary">add_circle</mat-icon> 
+    <h1>All Features</h1>
+    <button mat-button color="primary" (click)="addFeature()">
+      <mat-icon>add</mat-icon> 
       <span>ADD FEATURE</span> 
     </button>
   </section>
@@ -13,27 +13,21 @@
   <section fxFill fxLayoutAlign="start start" fxLayout="row wrap" fxLayoutGap="15px">
    
     <mat-card class="feature-card" *ngFor="let feature of features" fxFlex="350px">
-
-      <img mat-card-image [src]="feature.isCustom ? '../../assets/img/feature-img.png' : feature.image"
-        alt="">
-
- <mat-card-title>{{ feature.title }}</mat-card-title>
-        <mat-card-subtitle>  
-           <mat-icon color="primary">folder</mat-icon>
-           <span>{{ feature.category }}</span>
-         </mat-card-subtitle>
-      <!-- <mat-card-content>
-        <p>{{ feature.description }}</p>
-      </mat-card-content> -->
-      <mat-card-actions align="center">
-         <button mat-button color="primary" (click)="viewButton(feature.id)">
-            <i class="material-icons">open_in_new</i>
-            <span>View</span>
-         </button>
-        <button mat-icon-button color="warn" (click)="addVote(feature.id)">
-            <i class="material-icons">favorite</i>
-            <span>{{ feature.votes }}</span>
+     
+      <img mat-card-image (click)="viewButton(feature.id)" [src]="feature.isCustom ? '../../assets/img/feature-img.png' : feature.image"
+        alt="" style="cursor: pointer;">
+           
+        <span class="subtitle">{{ feature.category }}</span>
+         <h2><a (click)="viewButton(feature.id)"  class="primary" style="cursor: pointer;">
+           {{ feature.title }}
+            </a>
+         </h2>
+      <mat-card-actions align="right">
+        <button mat-icon-button color="warn" (click)="addVote(feature.id, feature.votes)"> 
+            <mat-icon>favorite</mat-icon>
       </button>
+      <span class="votes">{{ feature.votes }}</span>
+
       </mat-card-actions>
     </mat-card>
 
@@ -42,9 +36,9 @@
               <mat-card-content fxLayoutAlign="center center" fxLayout="column" fxFill="339px">
 
                 <mat-icon color="primary">
-                  add_circle
+                  add
                 </mat-icon>
-                <h3>ADD FEATURE</h3>
+                <!-- <h3>ADD FEATURE</h3> -->
               </mat-card-content>
             </a>
           </mat-card>

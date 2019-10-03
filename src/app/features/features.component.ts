@@ -12,6 +12,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 })
 export class FeaturesComponent implements OnInit {
    loading = true;
+   vote:  number;
    features: [Feature];
    feature: Feature;
    id: String;
@@ -27,13 +28,12 @@ addFeature() {
    this.router.navigateByUrl('/form');
 }
 
-addVote(id) {
-   this.afs.collection("Features").doc<Feature>(`${id}`).valueChanges().subscribe(f => {
-      this.feature = JSON.parse(JSON.stringify(f));
-   })
+addVote(id, vote) {
+
    this.afs.collection("Features").doc<Feature>(`${id}`).set({
-      votes: this.feature.votes + 1
-   }, {merge: true});
+      votes: vote + 1
+   }, { merge: true });
+
 }
 
 viewButton(id) {
@@ -44,17 +44,21 @@ viewButton(id) {
    })
 }
 
+
+
+
   ngOnInit() {
    setTimeout(() => {
  
       this.afs.collection("Features").valueChanges().subscribe(features => {
          this.features = JSON.parse(JSON.stringify(features));
          this.loading = false;
-         console.log(this.features);
       });
     }, 1000)
   }
 }
+
+
 
 @Component({
    selector: 'feature-dialog',

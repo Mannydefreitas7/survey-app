@@ -1,9 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 /* /@import '@angular/material/prebuilt-themes/deeppurple-amber.css'; */
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap');
 html, body { height: 100%; }
 body { margin: 0;
-background: #e2dfd26b; font-family: 'Noto Sans', sans-serif;
+background: #ffffff; font-family: 'Roboto', sans-serif;;
 }
 
 header {
@@ -29,6 +29,8 @@ header h2 {
 }
 h1 {
    font-size: 2rem;
+   margin: 5px;
+   font-weight: 300;
    color: #000;
    text-align: center;
 }
@@ -85,6 +87,11 @@ mat-chip-list {
 button, a {
   margin-right: 8px;
 }
+.feature-card h2 {
+   margin: 2px 0;
+   text-transform: capitalize;
+   font-weight: 400;
+}
 .spinner {
    height: 400px !important;
 }
@@ -97,16 +104,37 @@ button, a {
    color: #3f51b5;
    font-weight: 700;
 }
+.votes {
+   margin-right: 5px;
+    height: 40px;
+    display: inline-block;
+    /* width: 40px; */
+    vertical-align: middle;
+    line-height: 40px;
+    text-align: center;
+    color: #f44236;
+    font-weight: 500;
+}
 .card {
-   height: 339px;
+   height: 317px;
    margin: 15px 0;
    border-radius: 0 !important;
    box-shadow: none !important;
-   border: 5px dashed #3f51b5;
-   background: transparent;
+   background: #00000014;
+}
+.subtitle {
+   color: #3335;
+    font-weight:400;
+    text-transform: uppercase
 }
 .feature-card.mat-card {
-   box-shadow: none !important;
-   border-radius: 0;
+   box-shadow: 2px 2px 20px #3332 !important;
+   border-radius: 0 !important;
    margin: 15px 0;
+}
+.mat-fab.mat-primary, .mat-flat-button.mat-primary, .mat-mini-fab.mat-primary, .mat-raised-button.mat-primary {
+   background-color: #4a6ca7;
+}
+.mat-button.mat-primary, .mat-icon-button.mat-primary, .mat-stroked-button.mat-primary, .primary {
+   color: #4a6ca7;
 }
