@@ -21,6 +21,7 @@ export class FormComponent implements OnInit {
    removable = true;
    addOnBlur = true;
    categories: [Category];
+
    
    readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
@@ -48,6 +49,11 @@ export class FormComponent implements OnInit {
      this.router.navigateByUrl('');
   }
 
+  get RandomColor() {
+   var color = Math.floor(0x1000000 * Math.random()).toString(16);
+   return '#' + ('000000' + color).slice(-6);
+ }
+
 createFeature() {
    const title = this.surveyGroup.get("title");
    const category = this.surveyGroup.get("category");
@@ -60,7 +66,8 @@ createFeature() {
       category: category.value || customCategory.value,
       description: description.value,
       votes: 0,
-      isCustom: true
+      isCustom: true,
+      color: this.RandomColor
    })
    .then(() => {
       if (customCategory.value !== "") {

@@ -1,0 +1,15 @@
+<section class="board">
+
+  <div class="board-tile" *ngFor="let tile of sortedFeatures">
+
+    <div fxLayoutAlign="space-between center" fxLayout="row">
+
+      <h3>{{ tile.title }}</h3>
+      <span class="vote">{{ tile.votes }}</span>
+    </div>
+
+    <mat-progress-bar mode="determinate" [value]="tile.votes"></mat-progress-bar>
+    <mat-divider></mat-divider>
+  </div>
+
+</section>

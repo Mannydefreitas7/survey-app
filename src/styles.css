@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap');
 html, body { height: 100%; }
 body { margin: 0;
-background: #ffffff; font-family: 'Roboto', sans-serif;;
+background: #ffffff; font-family: 'Roboto', sans-serif;
 }
 
 header {
@@ -23,9 +23,18 @@ header h2 {
 .mat-stepper-horizontal {
    background-color: transparent;
 }
+
+canvas.chartjs-render-monitor {
+   width: 1200px !important;
+   height: auto !important;
+   margin: auto;
+}
 .main {
       padding: 20px;
     display: block;
+}
+.chart {
+   margin: 20px 0;
 }
 h1 {
    font-size: 2rem;
@@ -49,6 +58,17 @@ h1 {
    margin-top: 10px;
 }
 
+.vote {
+   padding: 10px;
+   border-radius: 50px;
+   background: #d81c60;
+   color: #fff;
+   font-weight: 600;
+   width: 20px;
+   text-align: center;
+   height: 20px;
+}
+
 mat-chip-list {
    margin: 0 0 10px 0;
 }
@@ -57,6 +77,29 @@ mat-chip-list {
     font-weight: 700;
     color: #3338;
     margin-bottom: 5px;
+}
+
+.votes {
+   padding: 30px 0 10px !important;
+}
+
+.votes span {
+   margin-left: 5px;
+}
+
+.board-tile {
+   padding: 15px;
+   margin: 5px auto;
+   width: 90%;
+}
+
+.board-tile h3 {
+   font-weight: 500;
+   text-transform: capitalize;
+}
+
+.main h1 {
+   margin-bottom: 20px;
 }
 
 .feature-modal .image {
@@ -81,17 +124,29 @@ mat-chip-list {
    display: none;
 }
 .mat-form-field-flex {
-   border-radius: 10px !important;
+   border-radius: 0px !important;
    padding: 1em 1em 0 1.5em !important;
 }
 button, a {
   margin-right: 8px;
 }
+.feature-card {
+   min-height: 365px;
+}
+
 .feature-card h2 {
    margin: 2px 0;
-   text-transform: capitalize;
    font-weight: 400;
+   font-size: 20px;
 }
+
+.mat-card-actions {
+   position: absolute !important;
+   bottom: 5% !important;
+   left: 50% !important;
+   transform: translateX(-50%) !important;
+}
+
 .spinner {
    height: 400px !important;
 }
@@ -103,6 +158,19 @@ button, a {
    margin-left: 5px;
    color: #3f51b5;
    font-weight: 700;
+}
+
+.modal-header {
+   position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0 10px 0 20px;
+    background: #1f1f1f;
+    color: #fff;
+}
+
+.mat-dialog-container {
+   position: relative;
 }
 .votes {
    margin-right: 5px;
@@ -134,7 +202,14 @@ button, a {
 }
 .mat-fab.mat-primary, .mat-flat-button.mat-primary, .mat-mini-fab.mat-primary, .mat-raised-button.mat-primary {
    background-color: #4a6ca7;
+   border-radius: 0 !important;
 }
 .mat-button.mat-primary, .mat-icon-button.mat-primary, .mat-stroked-button.mat-primary, .primary {
    color: #4a6ca7;
 }
+
+.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
+   background-color: #4a6ca7;
+   color: #fff !important;
+}
+

@@ -1,47 +1,45 @@
-<section>
-  <section fxFill fxLayoutAlign="space-between center">
-    <h1>All Features</h1>
-    <button mat-button color="primary" (click)="addFeature()">
+<section class="main">
+  <section fxFill fxLayoutAlign="center center">
+    <h1>Select your most wanted feature on JW Library</h1>
+    <!-- <button mat-button color="primary" (click)="addFeature()">
       <mat-icon>add</mat-icon> 
       <span>ADD FEATURE</span> 
-    </button>
+    </button> -->
   </section>
   <section *ngIf="loading" class="spinner" fxLayout="col" fxLayoutAlign="center center" fxFill>
       <mat-spinner strokeWidth="5" diameter="70"></mat-spinner>
    </section>
 
-  <section fxFill fxLayoutAlign="start start" fxLayout="row wrap" fxLayoutGap="15px">
+  <section fxFill fxLayoutAlign="space-around start" fxLayout="row wrap" fxLayoutGap="10px">
    
-    <mat-card class="feature-card" *ngFor="let feature of features" fxFlex="350px">
+    <mat-card class="feature-card" *ngFor="let feature of features" fxFlex="250px">
      
-      <img mat-card-image (click)="viewButton(feature.id)" [src]="feature.isCustom ? '../../assets/img/feature-img.png' : feature.image"
-        alt="" style="cursor: pointer;">
+      <img mat-card-image [src]="feature.isCustom ? '../../assets/img/feature-img.png' : feature.image"
+        alt="">
            
-        <span class="subtitle">{{ feature.category }}</span>
-         <h2><a (click)="viewButton(feature.id)"  class="primary" style="cursor: pointer;">
+        <span class="subtitle">JW Library</span>
+         <h2>
            {{ feature.title }}
-            </a>
          </h2>
-      <mat-card-actions align="right">
-        <button mat-icon-button color="warn" (click)="addVote(feature.id, feature.votes)"> 
-            <mat-icon>favorite</mat-icon>
+      <mat-card-actions align="center" class="votes">
+      <button mat-flat-button color="primary"  [matBadge]="feature.votes" matBadgePosition="after" matBadgeColor="warn" (click)="addVote(feature.id, feature.votes)"> 
+            <mat-icon>favorite_border</mat-icon>
+            <span >VOTE</span>
       </button>
-      <span class="votes">{{ feature.votes }}</span>
 
       </mat-card-actions>
     </mat-card>
 
-       <mat-card  matRipple matRippleColor="accent" fxFlex="350px" class="card add-feature" *ngIf="!loading" (click)="addFeature()">
+       <!-- <mat-card  matRipple matRippleColor="accent" fxFlex="350px" class="card add-feature" *ngIf="!loading" (click)="addFeature()">
             <a style="cursor: pointer;" >
               <mat-card-content fxLayoutAlign="center center" fxLayout="column" fxFill="339px">
 
                 <mat-icon color="primary">
                   add
                 </mat-icon>
-                <!-- <h3>ADD FEATURE</h3> -->
               </mat-card-content>
             </a>
-          </mat-card>
+          </mat-card> -->
 
 
   </section>

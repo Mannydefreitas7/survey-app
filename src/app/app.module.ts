@@ -3,18 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ChartsModule } from 'ng2-charts';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormComponent } from './form/form.component';
 import { BoardComponent } from './board/board.component';
-import { MatStepperModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatChipsModule, MatIconModule, MatCardMdImage, MatCardModule, MatOptionModule, MatSelectModule, MatSnackBarModule, MatSpinner, MatProgressSpinnerModule, MatRippleModule, MatDialogModule, MatBadgeModule } from '@angular/material';
+import { MatStepperModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatChipsModule, MatIconModule, MatCardMdImage, MatCardModule, MatOptionModule, MatSelectModule, MatSnackBarModule, MatSpinner, MatProgressSpinnerModule, MatRippleModule, MatDialogModule, MatBadgeModule, MatSort, MatSortModule, MatProgressBarModule, MatDividerModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FeaturesComponent } from './features/features.component';
 import { Feature } from './feature.motel';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DialogOverviewExampleDialog } from './features/features.component';
+import { ChartComponent } from './chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +24,16 @@ import { DialogOverviewExampleDialog } from './features/features.component';
     FormComponent,
     BoardComponent,
     FeaturesComponent,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ChartsModule,
     FormsModule,
     MatInputModule,
+    MatDividerModule,
     MatButtonModule,
     ReactiveFormsModule,
     MatChipsModule,
@@ -40,10 +45,12 @@ import { DialogOverviewExampleDialog } from './features/features.component';
     MatProgressSpinnerModule,
     MatSelectModule,
     MatBadgeModule,
+    MatSortModule,
     MatDialogModule,
     MatIconModule,
     MatStepperModule,
     MatRippleModule,
+    MatProgressBarModule,
     MatFormFieldModule,
     AngularFireModule.initializeApp(environment.firebase),
     BrowserAnimationsModule,

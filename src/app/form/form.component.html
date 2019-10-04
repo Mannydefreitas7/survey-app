@@ -4,16 +4,22 @@
    
          <mat-horizontal-stepper [linear]="isLinear" #stepper>
    
-            <mat-step [stepControl]="titleControl">
+            <mat-step>
             
                 <ng-template matStepLabel>Feature Title</ng-template>
 
                <div class="section--question">
+                  <h3>Tell us more about your feature</h3>
                   <div>
                      <mat-form-field appearance="fill">
                            <mat-label>Feature Title</mat-label>
                         <input matInput placeholder="More Highlight Colors" formControlName="title">
                      </mat-form-field>
+                     <br>
+                     <mat-form-field appearance="fill">
+                           <mat-label>Feature Description</mat-label>
+                         <textarea matInput rows="8" cols="100" placeholder="Tell us more about your most wanted feature..." formControlName="description"></textarea>
+                       </mat-form-field>
                   <div>
                      <button mat-flat-button color="primary" matStepperNext>Next</button>
                   </div>
@@ -23,14 +29,15 @@
                
             </mat-step>
    
-            <mat-step [stepControl]="categoryControl">
+            <mat-step>
 
                 <ng-template matStepLabel>Feature category</ng-template>
                 <div class="section--question">
+                     <h3>Select a category</h3>
                      <div>  
                               <mat-form-field appearance="fill">
                                     <mat-label>Select category</mat-label>
-                                    <mat-select formControlName="category" [(value)]="selected">
+                                    <mat-select formControlName="category" >
                                        <mat-option  *ngFor="let cat of categories" [value]="cat.name"> {{ cat.name }}</mat-option>
                                     </mat-select>
                                  </mat-form-field>
@@ -43,29 +50,12 @@
                              
                         <div>
                            <button mat-button matStepperPrevious>Back</button>
-                           <button mat-raised-button color="primary" matStepperNext>Next</button>
+                           <button mat-flat-button color="primary" matStepperNext>Next</button>
                         </div>
                      </div>
                   </div>
 
             </mat-step>
-   
-            <mat-step [stepControl]="descriptionControl">
-   
-                  <div class="section--question">
-                        <div>
-                    <ng-template matStepLabel>Feature Description</ng-template>
-                    <mat-form-field appearance="fill">
-                        <mat-label>Feature Description</mat-label>
-                      <textarea matInput rows="8" cols="100" placeholder="Tell us more about your most wanted feature..." formControlName="description"></textarea>
-                    </mat-form-field>
-                    <div>
-                      <button mat-button matStepperPrevious>Back</button>
-                      <button mat-raised-button color="primary" matStepperNext>Next</button>
-                     </div>
-                  </div>
-               </div>
-                </mat-step>
 
                 <mat-step>
                      <div class="section--question">
@@ -79,7 +69,7 @@
 
                     
                      <div>
-                       <button mat-raised-button color="primary" (click)="createFeature()">SUBMIT</button>
+                       <button mat-flat-button color="primary" (click)="createFeature()">SUBMIT</button>
                      </div>
                   </div>
                </div>

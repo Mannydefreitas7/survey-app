@@ -7,6 +7,7 @@ export class Feature {
 	description?: string;
    votes?: number;
    isCustom?: Boolean;
+   color?: string;
 }
 
 export class Category {

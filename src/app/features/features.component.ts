@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable, merge} from 'rxjs'
 import { AngularFirestore, AngularFirestoreCollection }  from '@angular/fire/firestore';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { BoardComponent } from '../board/board.component';
 
 @Component({
   selector: 'app-features',
@@ -48,6 +49,8 @@ viewButton(id) {
 
 
   ngOnInit() {
+
+
    setTimeout(() => {
  
       this.afs.collection("Features").valueChanges().subscribe(features => {
@@ -55,7 +58,11 @@ viewButton(id) {
          this.loading = false;
       });
     }, 1000)
+  
   }
+
+
+
 }
 
 
@@ -71,6 +78,7 @@ viewButton(id) {
    constructor(
      public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
      public afs: AngularFirestore,
+     private board: BoardComponent,
      @Inject(MAT_DIALOG_DATA) public data: any) {
       this.afs.collection("Features").doc<Feature>(`${data.id}`).valueChanges().subscribe(feature => {
          this.feature = JSON.parse(JSON.stringify(feature));
@@ -80,6 +88,7 @@ viewButton(id) {
      }
 
    addVote(id) {
+
       this.afs.collection("Features").doc<Feature>(`${id}`).valueChanges().subscribe(f => {
          this.feature = JSON.parse(JSON.stringify(f));
       })
